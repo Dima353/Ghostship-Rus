@@ -329,7 +329,7 @@ void render_hud_timer(void) {
 #ifdef VERSION_EU
     switch (eu_get_language()) {
         case LANGUAGE_ENGLISH:
-            print_text(OTRGetDimensionFromRightEdgeOverride(150), 185, "TIME");
+            print_text(OTRGetDimensionFromRightEdgeOverride(160), 185, "CPISY");
             break;
         case LANGUAGE_FRENCH:
             print_text(OTRGetDimensionFromRightEdgeOverride(155), 185, "TEMPS");
@@ -339,7 +339,7 @@ void render_hud_timer(void) {
             break;
     }
 #else
-    print_text(OTRGetDimensionFromRightEdgeOverride(150), 185, "TIME");
+    print_text(OTRGetDimensionFromRightEdgeOverride(160), 185, "CPISY");
 #endif
 
     print_text_fmt_int(OTRGetDimensionFromRightEdgeOverride(91), 185, "%0d", timerMins);
