@@ -29,6 +29,17 @@ jobs:
             build/x64/vcpkg
             build/x64/vcpkg_installed
             build/x64/vcpkg/downloads
+      - name: Cache LLVM prebuilt (Windows FetchContent)
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-llvm-prebuilt-18.1.8-x64
+          path: build/x64/_deps/llvm_prebuilt-src
+      - name: Install Vulkan SDK
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/1.4.350.0/windows/vulkansdk-windows-X64-1.4.350.0.exe" -OutFile VulkanSDK.exe
+          Start-Process -FilePath VulkanSDK.exe -Wait -ArgumentList "/S"
+          Remove-Item VulkanSDK.exe
       - name: Build
         run: |
           $env:VCPKG_ROOT=""
